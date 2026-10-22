@@ -2,8 +2,8 @@
 
 日期：2026-10-22。
 
-状态：总体方案已接受，首版本地实现与验证进行中；尚未公开部署。
-首发资源尚未确认，DTS 资产库等待配套 PAK 整理完成后上线。
+状态：总体方案已接受，独立资源仓库与首批 Release 附件已建立。
+首批资源为 DTS_Library_v6 与三个种植策略；PAK 仅记录外部下载入口，种植方案暂未上架。
 本轮采用 Resources 独立托管页面，并在浏览器中按需加载资源说明。
 具体实现范围与上线条件见 resource-format.md、release-checklist.md 和 ADR-0001。
 
@@ -219,4 +219,4 @@ README 支持普通 Markdown、表格、图片和链接；相对图片路径按�
 - [Google 的 JavaScript 搜索说明](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
 - [GitHub Release 附件限制](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 
-本地初始化不等于已创建 GitHub 仓库、已部署资源中心或已发布资源。上线前以实际结果验收。
+部署与下载的实际验收记录见 release-checklist.md。

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "universal-street-tree",
+  "type": "strategies",
+  "name": "通用行道树",
+  "summary": "沿狭长绿带组织乔木与灌木，按局部宽度切换单行、双带和三带排布，适用于道路分隔带。",
+  "author": "Mr_Pardon",
+  "platforms": [
+    "DTS"
+  ],
+  "tags": [
+    "行道树",
+    "道路绿带",
+    "带状种植"
+  ],
+  "license": "Apache-2.0",
+  "cover": "media/roles.webp",
+  "recommended": "2.0.2",
+  "versions": [
+    {
+      "version": "2.0.2",
+      "releasedAt": "2026-10-22",
+      "readme": "README.md",
+      "status": "published",
+      "notes": "增加单一 160 × 6 米道路绿带参数示例，生成算法不变。",
+      "package": {
+        "identity": "universal_street_tree",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/strategy-universal-street-tree-v2.0.2/universal_street_tree-2.0.2.vfs",
+        "filename": "universal_street_tree-2.0.2.vfs",
+        "bytes": 33807,
+        "sha256": "fa840e589fef8d69bed82dc2e6247c9b65c78092af5098367af207fef70ec514"
+      },
+      "relations": []
+    }
+  ]
+}

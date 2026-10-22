@@ -4,7 +4,8 @@ import { record } from '../fixtures.mjs';
 async function noOverflow(page) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
 }
-test('real empty catalog, categories, contribution and responsive assets', async ({ page }) => {
+test('empty catalog, categories, contribution and responsive assets', async ({ page }) => {
+  await page.route('**/catalog.json', route => route.fulfill({ json: { schemaVersion: 1, resources: [] } }));
   const errors = []; page.on('pageerror', error => errors.push(error.message));
   for (const width of [1440, 900, 390, 320]) {
     await page.setViewportSize({ width, height: 960 });
@@ -23,6 +24,43 @@ test('real empty catalog, categories, contribution and responsive assets', async
   await page.reload();
   await expect(page.getByRole('heading', { name: '通过 PR 贡献' })).toBeVisible();
   await noOverflow(page);
+  expect(errors).toEqual([]);
+});
+
+test('published resources, thumbnails and PAK links work across viewport sizes', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  for (const width of [1440, 900, 390, 320]) {
+    await page.setViewportSize({ width, height: 960 });
+    await page.goto('./');
+    await expect(page.locator('.resource-card')).toHaveCount(1);
+    await expect(page.locator('.resource-card')).toContainText('DTS_Library_v6');
+    await expect(page.locator('.resource-cover img')).toBeVisible();
+    await expect.poll(() => page.locator('.resource-cover img').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+    expect((await page.locator('.catalog-heading').boundingBox()).height).toBeLessThanOrEqual(120);
+    await noOverflow(page);
+    await page.screenshot({ path: `verification/published-assets-${width}.png`, fullPage: true });
+    await page.locator('.resource-card').click();
+    await expect(page.locator('.readme')).toContainText('596 项资产');
+    await expect(page.getByRole('link', { name: /下载 .vfa/ })).toHaveAttribute('href', /releases\/download\/assets-dts-library-v6.0.0\/DTS_Library_v6.vfa$/);
+    await expect(page.locator('a[href="https://pan.baidu.com/s/1Te07ATBL0UrvJVowNR5k8w?pwd=sp4c"]').first()).toBeVisible();
+    await noOverflow(page);
+    await page.screenshot({ path: `verification/published-detail-${width}.png`, fullPage: true });
+    await page.goto('./?type=strategies');
+    await expect(page.locator('.resource-card')).toHaveCount(3);
+    await expect(page.locator('.resource-card').filter({ hasText: '通用自然聚落' })).toHaveCount(0);
+    await expect.poll(() => page.locator('.resource-cover img').evaluateAll(images => images.length === 3 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
+    await noOverflow(page);
+    await page.screenshot({ path: `verification/published-strategies-${width}.png`, fullPage: true });
+  }
+  await page.setViewportSize({ width: 1440, height: 960 });
+  for (const id of ['layered-ecological-community', 'lawn-feature-groups', 'universal-street-tree']) {
+    await page.goto(`./?type=strategies&id=${id}`);
+    await expect(page.locator('.readme')).toContainText('Mr_Pardon');
+    await expect(page.getByRole('link', { name: /下载 .vfs/ })).toBeVisible();
+    await expect.poll(() => page.locator('.readme img').evaluateAll(images => images.length > 0 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
+    await noOverflow(page);
+  }
   expect(errors).toEqual([]);
 });
 

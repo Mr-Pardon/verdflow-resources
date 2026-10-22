@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "dts-library",
+  "type": "assets",
+  "name": "DTS_Library_v6",
+  "summary": "596 项 DTS 植被资产，涵盖乔木、灌木、花草等 8 个分类，附带缩略图与配套 PAK 入口。",
+  "author": "Mr_Pardon",
+  "platforms": [
+    "DTS"
+  ],
+  "tags": [
+    "乔木",
+    "灌木",
+    "花草",
+    "PAK"
+  ],
+  "license": "模型、缩略图与 PAK 的使用遵循原资源授权",
+  "cover": "media/tree.jpg",
+  "recommended": "6.0.0",
+  "versions": [
+    {
+      "version": "6.0.0",
+      "releasedAt": "2026-10-22",
+      "readme": "README.md",
+      "status": "published",
+      "notes": "首批公开资源。596 项资产与 596 张缩略图，公开标识 dts_library；6.0.0 为资源分发版本。",
+      "package": {
+        "identity": "dts_library",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/assets-dts-library-v6.0.0/DTS_Library_v6.vfa",
+        "filename": "DTS_Library_v6.vfa",
+        "bytes": 8723685,
+        "sha256": "c07ceab130dc0576329557bbe3609d8baa9ab31d393ad5a0ae6af9c275770396"
+      },
+      "relations": [
+        {
+          "kind": "pak",
+          "name": "DTS_Library_v6 配套 PAK",
+          "url": "https://pan.baidu.com/s/1Te07ATBL0UrvJVowNR5k8w?pwd=sp4c",
+          "note": "百度网盘，提取码 sp4c。模型与 PAK 的使用遵循原资源授权；需另行在 DTS 中准备资源。"
+        }
+      ]
+    }
+  ]
+}

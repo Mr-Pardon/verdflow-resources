@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "lawn-feature-groups",
+  "type": "strategies",
+  "name": "草坪点景组团",
+  "summary": "主体草坪与收边草坪形成连续覆盖，可叠加主景、灌木和外围点缀，适用于花坛与草坪景观。",
+  "author": "Mr_Pardon",
+  "platforms": [
+    "DTS"
+  ],
+  "tags": [
+    "草坪",
+    "花坛",
+    "点景组团"
+  ],
+  "license": "Apache-2.0",
+  "cover": "media/roles.webp",
+  "recommended": "1.0.2",
+  "versions": [
+    {
+      "version": "1.0.2",
+      "releasedAt": "2026-10-22",
+      "readme": "README.md",
+      "status": "published",
+      "notes": "增加单一弧形内凹花坛的参数示例，生成算法不变。",
+      "package": {
+        "identity": "lawn_feature_groups",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/strategy-lawn-feature-groups-v1.0.2/lawn_feature_groups-1.0.2.vfs",
+        "filename": "lawn_feature_groups-1.0.2.vfs",
+        "bytes": 46119,
+        "sha256": "63a75b006a620728c56fb37aa772ccf062ea70c1d9ee4d518ea2eb5d8ec7c828"
+      },
+      "relations": []
+    }
+  ]
+}

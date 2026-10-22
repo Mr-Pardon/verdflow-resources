@@ -1,6 +1,6 @@
 export const siteUrl = 'https://mr-pardon.github.io/verdflow-site/';
 export const manual = path => new URL(path, siteUrl).href;
-const configuredRepo = import.meta.env.VITE_RESOURCE_REPOSITORY || '';
+const configuredRepo = import.meta.env.VITE_RESOURCE_REPOSITORY ?? 'https://github.com/Mr-Pardon/verdflow-resources';
 if (configuredRepo && !/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(configuredRepo)) {
   throw new Error('Invalid resource repository URL');
 }

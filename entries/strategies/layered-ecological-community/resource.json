@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "layered-ecological-community",
+  "type": "strategies",
+  "name": "层次生态群落",
+  "summary": "以共享密度场组织铺底与主景，在大面积绿地中形成自然疏密变化；关闭铺底后可独立铺设主景植被。",
+  "author": "Mr_Pardon",
+  "platforms": [
+    "DTS"
+  ],
+  "tags": [
+    "自然群落",
+    "大面积绿地",
+    "参数示例"
+  ],
+  "license": "Apache-2.0",
+  "cover": "media/roles.webp",
+  "recommended": "2.2.2",
+  "versions": [
+    {
+      "version": "2.2.2",
+      "releasedAt": "2026-10-22",
+      "readme": "README.md",
+      "status": "published",
+      "notes": "优化密度场计算缓存与覆盖率阈值统计预算。角色和参数保持一致，少量边缘点可能与 2.2.1 不同。",
+      "package": {
+        "identity": "layered_ecological_community",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/strategy-layered-ecological-community-v2.2.2/layered_ecological_community-2.2.2.vfs",
+        "filename": "layered_ecological_community-2.2.2.vfs",
+        "bytes": 40796,
+        "sha256": "823065f60787c28ae7039732cb27582de1523d0d412ea3cb34d8bbe56b577c2d"
+      },
+      "relations": []
+    }
+  ]
+}
