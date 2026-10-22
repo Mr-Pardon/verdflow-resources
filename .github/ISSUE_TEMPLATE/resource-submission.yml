@@ -1,0 +1,56 @@
+name: 资源投稿
+description: 提交资产库、策略包或种植方案供审核。
+title: '[资源投稿] '
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: 资源类型
+      options:
+        - 资产库（VFA）
+        - 策略（VFS）
+        - 种植方案（VFP）
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: 资源名称与版本
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 介绍与预览图
+      description: 用途、适用范围、实际验证的环境和注意事项。
+    validations:
+      required: true
+  - type: textarea
+    id: download
+    attributes:
+      label: 包文件链接与关联资源
+      description: 提供公开包文件链接。PAK 仅提供外部入口；请注明方案使用的策略与来源资产库。
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: 作者署名
+    validations:
+      required: true
+  - type: textarea
+    id: license
+    attributes:
+      label: 许可与素材来源
+      description: 说明你有权分发的内容、许可和第三方资源的授权限制。
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: 投稿确认
+      options:
+        - label: 已移除私人路径、项目资料与凭据，确认拥有所提交内容的分发权。
+          required: true
+        - label: 理解资源收录不代表策略安全认证，也不会自动授予客户端执行信任。
+          required: true

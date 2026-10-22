@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "type", "name", "summary", "author", "platforms", "license", "recommended", "versions"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$", "maxLength": 100 },
+    "type": { "enum": ["assets", "strategies", "plans"] },
+    "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "summary": { "type": "string", "minLength": 1, "maxLength": 240 },
+    "author": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "platforms": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1, "maxLength": 40 } },
+    "tags": { "type": "array", "maxItems": 8, "uniqueItems": true, "items": { "type": "string", "minLength": 1, "maxLength": 32 } },
+    "license": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "cover": { "$ref": "#/definitions/localPath" },
+    "recommended": { "anyOf": [{ "$ref": "#/definitions/version" }, { "type": "null" }] },
+    "versions": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/release" } }
+  },
+  "definitions": {
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$", "maxLength": 80 },
+    "localPath": { "type": "string", "pattern": "^[a-zA-Z0-9_./-]+$", "maxLength": 200 },
+    "https": { "type": "string", "format": "uri", "pattern": "^https://", "maxLength": 2000 },
+    "release": {
+      "type": "object", "additionalProperties": false,
+      "required": ["version", "releasedAt", "readme", "status", "package", "relations"],
+      "properties": {
+        "version": { "$ref": "#/definitions/version" },
+        "releasedAt": { "type": "string", "format": "date" },
+        "readme": { "$ref": "#/definitions/localPath" },
+        "status": { "enum": ["published", "withdrawn"] },
+        "notes": { "type": "string", "maxLength": 2000 },
+        "withdrawalReason": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "package": {
+          "type": "object", "additionalProperties": false,
+          "required": ["identity", "url", "filename", "bytes", "sha256"],
+          "properties": {
+            "identity": { "type": "string", "minLength": 1, "maxLength": 200 },
+            "url": { "$ref": "#/definitions/https" },
+            "filename": { "type": "string", "pattern": "^[^/\\\\]+\\.(vfa|vfs|vfp)$" },
+            "bytes": { "type": "integer", "minimum": 1 },
+            "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+          }
+        },
+        "relations": {
+          "type": "array", "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["kind", "name"],
+            "properties": {
+              "kind": { "enum": ["strategy", "source-catalog", "pak"] },
+              "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+              "resourceId": { "type": "string", "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$" },
+              "version": { "$ref": "#/definitions/version" },
+              "url": { "$ref": "#/definitions/https" },
+              "note": { "type": "string", "maxLength": 500 }
+            }
+          }
+        }
+      }
+    }
+  }
+}
