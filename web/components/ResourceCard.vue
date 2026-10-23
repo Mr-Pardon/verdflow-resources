@@ -8,7 +8,7 @@ const failed = ref(false);
 watch(() => props.resource.cover, () => { failed.value = false; });
 </script>
 <template>
-  <a class="resource-card" :href="href" :data-tone="categoryById(resource.type).tone">
+  <a class="resource-card" :href="href" :data-type="resource.type" :data-tone="categoryById(resource.type).tone">
     <div class="resource-cover">
       <img v-if="resource.cover && !failed" :src="asset(resource.cover)" :alt="resource.name + '预览'" loading="lazy" @error="failed = true" />
       <div v-else class="cover-fallback"><CategoryIcon :type="resource.type" :size="38" /><span>{{ categoryById(resource.type).extension }}</span></div>

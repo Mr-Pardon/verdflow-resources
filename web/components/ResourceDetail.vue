@@ -35,7 +35,7 @@ function switchTab(event) {
       <header class="detail-heading"><div class="detail-type" :data-tone="category.tone"><CategoryIcon :type="record.type" :size="26" /></div><div><span class="eyebrow">{{ category.name }} / {{ category.extension }}</span><h1>{{ record.name }}</h1><p>{{ record.summary }}</p><div class="detail-byline"><span>{{ record.author }}</span><span v-for="platform in record.platforms" :key="platform">{{ platform }}</span></div></div></header>
       <div class="detail-layout">
         <div class="detail-content">
-          <figure v-if="summary?.cover && !coverFailed" class="detail-preview"><img :src="asset(summary.cover)" :alt="record.name + '预览'" @error="coverFailed = true" /></figure>
+          <figure v-if="summary?.cover && !coverFailed" class="detail-preview" :data-type="record.type"><img :src="asset(summary.cover)" :alt="record.name + '预览'" @error="coverFailed = true" /></figure>
           <div class="content-tabs" role="tablist" aria-label="资源详情" @keydown="switchTab"><button id="intro-tab" role="tab" :tabindex="tab === 'intro' ? 0 : -1" :aria-selected="tab === 'intro'" aria-controls="detail-content" @click="tab = 'intro'">资源介绍</button><button id="versions-tab" role="tab" :tabindex="tab === 'versions' ? 0 : -1" :aria-selected="tab === 'versions'" aria-controls="detail-content" @click="tab = 'versions'">版本记录<span>{{ record.versions.length }}</span></button></div>
           <div id="detail-content" role="tabpanel" :aria-labelledby="tab === 'intro' ? 'intro-tab' : 'versions-tab'">
             <div v-if="tab === 'intro'" class="readme" v-html="html"></div>

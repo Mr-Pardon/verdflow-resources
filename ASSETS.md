@@ -20,3 +20,15 @@
 `entries/assets/dts-library/media/tree.jpg` 原样提取自已发布的 DTS_Library_v6，
 为白腊树的内置预览缩略图。与库内其余模型和缩略图一样，遵循原资源授权，
 不因收录到资源中心或策略使用 Apache-2.0 而改变许可。
+
+`entries/assets/dts-library/media/cover-collage.jpg` 为资产库的四图拼接封面，
+选用 DTS_Library_v6 中的垂叶榕、日本枫、彭土杜鹃、丛生竹缩略图作为输入，
+通过 imagegen 合成并编码为 JPEG。原始单图和 VFA 保留原样。
+此封面用于展示库内植被类别，素材沿用原资源授权。
+
+三个策略条目中的 `media/cover-role-guide.png` 沿用产品角色示意图的 Lucide
+Trees、Shrub、Sprout 图标、角色配色、半透明区域和线框标记，经静态排版输出为 PNG。
+分别展示自然分簇、连续草坪与局部点景组团、沿线乔木与带状灌木。
+封面属于资源条目的静态插图，不代表生成器的精确输出点位或资产冠幅。
+未采用的景观模型风格封面仅保留为本地草稿，不进入公开内容目录。
+策略 README 和其中的 `media/roles.webp` 角色设计图继续保留原样。
