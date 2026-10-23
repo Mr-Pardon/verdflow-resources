@@ -1,11 +1,13 @@
-import { mkdir, writeFile, cp, rename, rm, lstat } from 'node:fs/promises';
+import { mkdir, writeFile, readFile, cp, rename, rm, lstat } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { readCatalog } from './catalog.mjs';
+import { buildStarter } from './starter.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 export async function generateCatalog({ checkOnly = false } = {}) {
   const entries = await readCatalog(resolve(root, 'entries'));
+  const starter = buildStarter(JSON.parse(await readFile(resolve(root, 'collections/starter.json'), 'utf8')), entries);
   if (checkOnly) return entries;
   const output = resolve(root, '.generated');
   if (dirname(output) !== resolve(root)) throw new Error('Generated output must remain inside the repository');
@@ -15,6 +17,7 @@ export async function generateCatalog({ checkOnly = false } = {}) {
   await rm(output, { recursive: true, force: true });
   await mkdir(output, { recursive: true });
   await cp(resolve(root, 'public'), output, { recursive: true });
+  await writeFile(resolve(output, 'starter-resources.json'), JSON.stringify(starter, null, 2));
   const resources = [];
   for (const { record, files, revision } of entries) {
     const prefix = `data/${record.id}/${revision}/`;

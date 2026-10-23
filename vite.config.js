@@ -12,10 +12,10 @@ export default defineConfig({
     name: 'resource-catalog',
     async buildStart() { await generateCatalog(); },
     configureServer(server) {
-      server.watcher.add(['entries', 'public']);
+      server.watcher.add(['entries', 'public', 'collections']);
       let queue = Promise.resolve();
       server.watcher.on('all', (event, path) => {
-        if (!/[\\/](entries|public)[\\/]/.test(path)) return;
+        if (!/[\\/](entries|public|collections)[\\/]/.test(path)) return;
         queue = queue.catch(() => {}).then(async () => {
           try {
             await generateCatalog();

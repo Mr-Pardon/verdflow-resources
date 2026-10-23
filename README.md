@@ -44,6 +44,7 @@ Windows 浏览器回归默认使用已安装的 Edge；其他环境使用 Playwr
 ## 维护入口
 
 - [资源格式与版本约定](docs/resource-format.md)
+- [新手推荐资源清单](collections/starter.json)：调整 Studio 一键导入的 VFA/VFS；下载信息由构建自动派生。
 - [独立资源中心 ADR](docs/adr/0001-independent-resource-center.md)
 - [上线清单与配置](docs/release-checklist.md)
 - [品牌与素材来源](ASSETS.md)

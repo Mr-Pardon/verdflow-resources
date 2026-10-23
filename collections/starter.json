@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "resources": [
+    { "id": "dts-library", "version": "recommended" },
+    { "id": "layered-ecological-community", "version": "recommended" },
+    { "id": "lawn-feature-groups", "version": "recommended" },
+    { "id": "universal-street-tree", "version": "recommended" }
+  ]
+}
