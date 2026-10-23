@@ -43,6 +43,7 @@ Windows 浏览器回归默认使用已安装的 Edge；其他环境使用 Playwr
 
 ## 维护入口
 
+- Issue 投稿填写示例：[资产库（VFA）](docs/submission-examples/assets.md) · [策略（VFS）](docs/submission-examples/strategies.md) · [种植方案（VFP）](docs/submission-examples/plans.md)
 - [资源格式与版本约定](docs/resource-format.md)
 - [新手推荐资源清单](collections/starter.json)：调整 Studio 一键导入的 VFA/VFS；下载信息由构建自动派生。
 - [独立资源中心 ADR](docs/adr/0001-independent-resource-center.md)

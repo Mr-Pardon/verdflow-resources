@@ -64,6 +64,24 @@ test('published resources, thumbnails and PAK links work across viewport sizes',
   expect(errors).toEqual([]);
 });
 
+test('contribution page links to all three submission examples and the Issue form', async ({ page }) => {
+  for (const width of [1440, 390, 320]) {
+    await page.setViewportSize({ width, height: 960 });
+    await page.goto('./?view=contribute');
+    const examples = page.getByRole('navigation', { name: '投稿填写示例' });
+    await expect(examples.getByRole('link')).toHaveCount(3);
+    for (const [id, name] of [['assets', '资产库'], ['strategies', '策略'], ['plans', '种植方案']]) {
+      const link = examples.getByRole('link', { name: `${name}示例`, exact: true });
+      await expect(link).toBeVisible();
+      await expect(link).toHaveAttribute('href', `https://github.com/Mr-Pardon/verdflow-resources/blob/main/docs/submission-examples/${id}.md`);
+      await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    }
+    await expect(page.getByRole('link', { name: '提交资源', exact: true })).toHaveAttribute('href', 'https://github.com/Mr-Pardon/verdflow-resources/issues/new/choose');
+    await noOverflow(page);
+    await page.screenshot({ path: `verification/submission-examples-${width}.png`, fullPage: true });
+  }
+});
+
 test('published plans show presets and navigate to their strategy and source catalog', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));

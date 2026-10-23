@@ -75,6 +75,10 @@ main { min-height: calc(100svh - 185px); }
 .submission-options article:nth-child(2)>svg { color: #587f91; }
 .submission-options h2 { font-size: 19px; }
 .submission-options p { margin: 12px 0 24px; color: var(--muted); }
+.submission-examples { border-top: 1px solid var(--line); padding-top: 18px; margin-bottom: 24px; }
+.submission-examples h3 { font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 10px; }
+.submission-examples>div { display: flex; flex-wrap: wrap; gap: 12px 20px; }
+.submission-examples a { font-size: 12px; }
 .submission-checklist { display: flex; gap: 22px; padding-top: 38px; margin-top: 38px; border-top: 1px solid var(--line); }
 .submission-checklist>svg { color: #748c7e; }
 .submission-checklist h2 { font-size: 18px; }
