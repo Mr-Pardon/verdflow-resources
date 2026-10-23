@@ -64,6 +64,36 @@ test('published resources, thumbnails and PAK links work across viewport sizes',
   expect(errors).toEqual([]);
 });
 
+test('published plans show presets and navigate to their strategy and source catalog', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 960 });
+    await page.goto('./?type=plans');
+    await expect(page.locator('.resource-card')).toHaveCount(2);
+    await expect(page.locator('.resource-card').filter({ hasText: '花坛点景' })).toHaveCount(1);
+    await expect(page.locator('.resource-card').filter({ hasText: '草坪铺设' })).toHaveCount(1);
+    await expect.poll(() => page.locator('.resource-cover img').evaluateAll(images => images.length === 2 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
+    await noOverflow(page);
+    await page.screenshot({ path: `verification/published-plans-${width}.png`, fullPage: true });
+    for (const id of ['flowerbed-accents', 'lawn-cover']) {
+      const href = `./?type=plans&id=${id}`;
+      await page.goto(href);
+      await expect(page.getByRole('link', { name: /下载 .vfp/ })).toHaveAttribute('href', new RegExp(`/plan-${id}-v1.0.0/${id}-1.0.0.vfp$`));
+      await expect(page.locator('.readme')).toContainText(id === 'lawn-cover' ? '仅启用' : '7 种植被');
+      await expect(page.locator('.related-section a[href="https://pan.baidu.com/s/1Te07ATBL0UrvJVowNR5k8w?pwd=sp4c"]')).toBeVisible();
+      await noOverflow(page);
+      await page.screenshot({ path: `verification/plan-${id}-${width}.png`, fullPage: true });
+      await page.locator('.related-section').getByRole('link', { name: '草坪点景组团', exact: true }).click();
+      await expect(page.locator('.detail-heading h1')).toHaveText('草坪点景组团');
+      await page.goto(href);
+      await page.locator('.related-section').getByRole('link', { name: 'DTS_Library_v6', exact: true }).click();
+      await expect(page.locator('.detail-heading h1')).toHaveText('DTS_Library_v6');
+    }
+  }
+  expect(errors).toEqual([]);
+});
+
 test('search, dynamic README, history, withdrawals and mobile detail using isolated fixtures', async ({ page }) => {
   const base = new URL(test.info().project.use.baseURL).pathname;
   const item = record();

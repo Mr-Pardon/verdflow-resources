@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "flowerbed-accents",
+  "type": "plans",
+  "name": "花坛点景",
+  "summary": "双层草坪搭配主景乔木、组团灌木与外围点缀，预设 5 种用途、7 种植被及种植参数，适合花坛与小型景观绿地。",
+  "author": "Mr_Pardon",
+  "platforms": [
+    "DTS"
+  ],
+  "tags": [
+    "花坛",
+    "点景组团",
+    "双层草坪"
+  ],
+  "license": "Apache-2.0（方案配置）；模型与 PAK 遵循原资源授权",
+  "cover": "media/cover.jpg",
+  "recommended": "1.0.0",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "releasedAt": "2026-10-23",
+      "readme": "README.md",
+      "status": "published",
+      "notes": "首个公开方案版本。启用全部五种植被用途，保存 7 种植被引用、权重、缩放与种植参数。",
+      "package": {
+        "identity": "profile_8e04104a367a",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/plan-flowerbed-accents-v1.0.0/flowerbed-accents-1.0.0.vfp",
+        "filename": "flowerbed-accents-1.0.0.vfp",
+        "bytes": 1845,
+        "sha256": "3cf17c29517d289d14a111cb30690198f7dd068c83e929cbdd04e943bfa505de"
+      },
+      "relations": [
+        {
+          "kind": "strategy",
+          "name": "草坪点景组团",
+          "resourceId": "lawn-feature-groups",
+          "version": "1.0.2",
+          "note": "保存方案时使用的策略版本；导入后由客户端解析兼容且已信任的安装版本。"
+        },
+        {
+          "kind": "source-catalog",
+          "name": "DTS_Library_v6",
+          "resourceId": "dts-library",
+          "version": "6.0.0",
+          "note": "植被来源与继续选材的入口。VFP 已携带配置快照，来源资产库不是方案执行的额外安装门槛。"
+        },
+        {
+          "kind": "pak",
+          "name": "DTS_Library_v6 配套 PAK",
+          "url": "https://pan.baidu.com/s/1Te07ATBL0UrvJVowNR5k8w?pwd=sp4c",
+          "note": "百度网盘，提取码 sp4c。请在 DTS 中准备对应模型资源。"
+        }
+      ]
+    }
+  ]
+}

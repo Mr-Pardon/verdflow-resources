@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "lawn-cover",
+  "type": "plans",
+  "name": "草坪铺设",
+  "summary": "仅启用主体草坪与收边草坪，预设两种草坪素材和缩放，适合快速铺设连续草坪；不新增乔木或点景组团。",
+  "author": "Mr_Pardon",
+  "platforms": [
+    "DTS"
+  ],
+  "tags": [
+    "草坪",
+    "铺设",
+    "双层覆盖"
+  ],
+  "license": "Apache-2.0（方案配置）；模型与 PAK 遵循原资源授权",
+  "cover": "media/cover.jpg",
+  "recommended": "1.0.0",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "releasedAt": "2026-10-23",
+      "readme": "README.md",
+      "status": "published",
+      "notes": "首个公开方案版本。仅启用主体草坪与收边草坪，关闭中心主景、组团灌木及外围点缀，保存草坪缩放与参数。",
+      "package": {
+        "identity": "profile_91af56bf92e6",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/plan-lawn-cover-v1.0.0/lawn-cover-1.0.0.vfp",
+        "filename": "lawn-cover-1.0.0.vfp",
+        "bytes": 1192,
+        "sha256": "46aba28db6aa73f2b8777599fad1b8c14cdc8347b708035bc7b04f918c2ef9b8"
+      },
+      "relations": [
+        {
+          "kind": "strategy",
+          "name": "草坪点景组团",
+          "resourceId": "lawn-feature-groups",
+          "version": "1.0.2",
+          "note": "保存方案时使用的策略版本；导入后由客户端解析兼容且已信任的安装版本。"
+        },
+        {
+          "kind": "source-catalog",
+          "name": "DTS_Library_v6",
+          "resourceId": "dts-library",
+          "version": "6.0.0",
+          "note": "植被来源与继续选材的入口。VFP 已携带配置快照，来源资产库不是方案执行的额外安装门槛。"
+        },
+        {
+          "kind": "pak",
+          "name": "DTS_Library_v6 配套 PAK",
+          "url": "https://pan.baidu.com/s/1Te07ATBL0UrvJVowNR5k8w?pwd=sp4c",
+          "note": "百度网盘，提取码 sp4c。请在 DTS 中准备对应模型资源。"
+        }
+      ]
+    }
+  ]
+}

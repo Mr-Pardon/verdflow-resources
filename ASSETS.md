@@ -32,3 +32,8 @@ Trees、Shrub、Sprout 图标、角色配色、半透明区域和线框标记，
 封面属于资源条目的静态插图，不代表生成器的精确输出点位或资产冠幅。
 未采用的景观模型风格封面仅保留为本地草稿，不进入公开内容目录。
 策略 README 和其中的 `media/roles.webp` 角色设计图继续保留原样。
+
+`entries/plans/flowerbed-accents/media/cover.jpg` 与
+`entries/plans/lawn-cover/media/cover.jpg` 分别来自维护者提供的“花坛点景.png”和“草坪铺设.png”。
+仅进行 JPEG 编码压缩，保留原图尺寸、构图和内容，用于相应方案的种植效果展示。
+画面中的植被与场景素材沿用原资源授权，不随方案配置的 Apache-2.0 许可重新授权。
