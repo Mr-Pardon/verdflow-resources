@@ -57,8 +57,8 @@ body:
     id: author
     attributes:
       label: 作者署名
-      description: 希望公开展示的个人昵称或组织名称；不是电脑用户名或私人邮箱。
-      placeholder: 你的公开署名
+      description: 资源原作者或设计团队的公开署名；整理与发布者可在下方说明中单独注明。
+      placeholder: 原作者或设计团队的公开署名
     validations:
       required: true
   - type: textarea

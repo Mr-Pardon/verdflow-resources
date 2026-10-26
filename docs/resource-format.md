@@ -22,6 +22,9 @@
 | recommended | 推荐版本；所有版本已撤回时设为 null |
 | versions | 版本记录，按希望展示的顺序填写 |
 
+`author` 填写资源原作者或设计团队的署名；整理与发布者在 README 中单独注明，
+不因负责资源整理而替代原作者。署名调整不自动改变原资源授权。
+
 每个版本包含 version、releasedAt、readme、status、package、relations，
 可补充 notes。status 为 published 或 withdrawn，撤回必须提供 withdrawalReason。
 package 记录真实包内 identity、固定 Release 下载 URL、filename、bytes 和 sha256。

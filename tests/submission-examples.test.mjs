@@ -21,6 +21,7 @@ test('each submission example matches a published package and all form fields', 
     const release = record.versions.find(item => item.version === version);
     assert.equal(release?.status, 'published');
     assert.ok(source.includes(`${record.name} / ${version}`));
+    assert.ok(source.includes(`## 作者署名\n\n${record.author}\n`), `${type}: example author must match resource attribution`);
     assert.ok(source.includes(release.package.url));
     assert.ok(form.includes(`${repository}/blob/main/docs/submission-examples/${type}.md`));
     for (const heading of headings) {

@@ -17,6 +17,9 @@
 署名：Mr_Pardon。Logo 与媒体不自动归入网站代码许可。
 手册截图是操作示意，不承诺实际地块或所选模型会得到相同效果。
 
+下述 DTS_Library_v6 与 Weekly_Library 的资产库设计归属 **飞渡DTS**，
+资源作者按这一署名展示；Mr_Pardon 负责面向 VerdFlow 的目录整理与发布，不作为资产设计者署名。
+
 `entries/assets/dts-library/media/tree.jpg` 原样提取自已发布的 DTS_Library_v6，
 为白腊树的内置预览缩略图。与库内其余模型和缩略图一样，遵循原资源授权，
 不因收录到资源中心或策略使用 Apache-2.0 而改变许可。

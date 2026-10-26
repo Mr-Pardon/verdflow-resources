@@ -37,12 +37,15 @@ test('published resources, thumbnails and PAK links work across viewport sizes',
     const dtsLibrary = page.locator('.resource-card').filter({ hasText: 'DTS_Library_v6' });
     await expect(dtsLibrary).toHaveCount(1);
     await expect(page.locator('.resource-card').filter({ hasText: 'Weekly_Library' })).toHaveCount(1);
+    await expect(page.locator('.resource-meta > span:first-child')).toHaveText(['飞渡DTS', '飞渡DTS']);
     await expect.poll(() => page.locator('.resource-cover img').evaluateAll(images => images.length === 2 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
     expect((await page.locator('.catalog-heading').boundingBox()).height).toBeLessThanOrEqual(120);
     await noOverflow(page);
     await page.screenshot({ path: `verification/published-assets-${width}.png`, fullPage: true });
     await dtsLibrary.click();
     await expect(page.locator('.readme')).toContainText('596 项资产');
+    await expect(page.locator('.detail-byline')).toContainText('飞渡DTS');
+    await expect(page.locator('.readme')).toContainText('资产库设计：飞渡DTS');
     await expect(page.getByRole('link', { name: /下载 .vfa/ })).toHaveAttribute('href', /releases\/download\/assets-dts-library-v6.0.0\/DTS_Library_v6.vfa$/);
     await expect(page.locator('a[href="https://pan.baidu.com/s/1Te07ATBL0UrvJVowNR5k8w?pwd=sp4c"]').first()).toBeVisible();
     await noOverflow(page);
@@ -72,6 +75,8 @@ test('Weekly Library has its own VFA identity, PAK and intact asset previews', a
     await page.setViewportSize({ width, height: 960 });
     await page.goto('./?id=weekly-library');
     await expect(page.locator('.detail-heading h1')).toHaveText('Weekly_Library');
+    await expect(page.locator('.detail-byline')).toContainText('飞渡DTS');
+    await expect(page.locator('.readme')).toContainText('资产库设计：飞渡DTS');
     await expect(page.locator('.readme')).toContainText('179 项资产');
     await expect(page.locator('.readme')).toContainText('weekly_library');
     await expect(page.locator('.readme')).toContainText('163 项植被');
