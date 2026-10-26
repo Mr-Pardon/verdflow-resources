@@ -37,3 +37,10 @@ Trees、Shrub、Sprout 图标、角色配色、半透明区域和线框标记，
 `entries/plans/lawn-cover/media/cover.jpg` 分别来自维护者提供的“花坛点景.png”和“草坪铺设.png”。
 仅进行 JPEG 编码压缩，保留原图尺寸、构图和内容，用于相应方案的种植效果展示。
 画面中的植被与场景素材沿用原资源授权，不随方案配置的 Apache-2.0 许可重新授权。
+
+`entries/assets/weekly-library/media/cover-collage.jpg` 使用 Weekly_Library 内的
+棕榈_03、五桠果_01_Med、棕榈_01、荷花_01_Ultra 四张原始缩略图，经无缝方形网格排版输出为 JPEG。
+封面为 1360 × 1020 像素，各图片区域保持原比例，不放大原图、不添加留边或分隔线。
+仅调整展示布局，不重建模型、不生成替代植物，VFA 内缩略图保留原字节。
+`media/palm.jpg` 为其中棕榈_01 的原始缩略图，未重新编码。
+模型、图片和外部 PAK 沿用原资源授权，不因收录到资源中心而改变许可。

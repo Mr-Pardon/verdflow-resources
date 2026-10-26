@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "weekly-library",
+  "type": "assets",
+  "name": "Weekly_Library",
+  "summary": "169 项植被与 10 项小品，涵盖乔木、棕榈、灌木、花草等 5 个分类，附缩略图、部分参考尺寸及配套 PAK 入口。",
+  "author": "Mr_Pardon",
+  "platforms": ["DTS"],
+  "tags": ["乔木", "棕榈", "灌木", "花草", "小品", "PAK"],
+  "license": "模型、缩略图与 PAK 的使用遵循原资源授权",
+  "cover": "media/cover-collage.jpg",
+  "recommended": "1.0.0",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "releasedAt": "2026-10-26",
+      "readme": "README.md",
+      "status": "published",
+      "notes": "首次公开分发，依据 2026-10-24 清单整理。179 项资产、5 个分类，公开库标识 weekly_library；163 项植被保留参考半径与高度。配套模型通过 Weekly_Library_1024.pak 外链获取。",
+      "package": {
+        "identity": "weekly_library",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/assets-weekly-library-v1.0.0/Weekly_Library_1024.vfa",
+        "filename": "Weekly_Library_1024.vfa",
+        "bytes": 26568983,
+        "sha256": "b2e2728bbc4b1164229d8e6e211e36915e4c3f337489e34b1bb777139d48c077"
+      },
+      "relations": [
+        {
+          "kind": "pak",
+          "name": "Weekly_Library_1024.pak",
+          "url": "https://pan.baidu.com/s/1zZZEnBxxpjTkVcc7VYlbcQ?pwd=ki35",
+          "note": "百度网盘，提取码 ki35。模型与 PAK 的使用遵循原资源授权；请在 DTS 中另行准备对应模型。"
+        }
+      ]
+    }
+  ]
+}

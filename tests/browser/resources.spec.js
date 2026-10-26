@@ -33,14 +33,15 @@ test('published resources, thumbnails and PAK links work across viewport sizes',
   for (const width of [1440, 900, 390, 320]) {
     await page.setViewportSize({ width, height: 960 });
     await page.goto('./');
-    await expect(page.locator('.resource-card')).toHaveCount(1);
-    await expect(page.locator('.resource-card')).toContainText('DTS_Library_v6');
-    await expect(page.locator('.resource-cover img')).toBeVisible();
-    await expect.poll(() => page.locator('.resource-cover img').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+    await expect(page.locator('.resource-card')).toHaveCount(2);
+    const dtsLibrary = page.locator('.resource-card').filter({ hasText: 'DTS_Library_v6' });
+    await expect(dtsLibrary).toHaveCount(1);
+    await expect(page.locator('.resource-card').filter({ hasText: 'Weekly_Library' })).toHaveCount(1);
+    await expect.poll(() => page.locator('.resource-cover img').evaluateAll(images => images.length === 2 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
     expect((await page.locator('.catalog-heading').boundingBox()).height).toBeLessThanOrEqual(120);
     await noOverflow(page);
     await page.screenshot({ path: `verification/published-assets-${width}.png`, fullPage: true });
-    await page.locator('.resource-card').click();
+    await dtsLibrary.click();
     await expect(page.locator('.readme')).toContainText('596 项资产');
     await expect(page.getByRole('link', { name: /下载 .vfa/ })).toHaveAttribute('href', /releases\/download\/assets-dts-library-v6.0.0\/DTS_Library_v6.vfa$/);
     await expect(page.locator('a[href="https://pan.baidu.com/s/1Te07ATBL0UrvJVowNR5k8w?pwd=sp4c"]').first()).toBeVisible();
@@ -60,6 +61,28 @@ test('published resources, thumbnails and PAK links work across viewport sizes',
     await expect(page.getByRole('link', { name: /下载 .vfs/ })).toBeVisible();
     await expect.poll(() => page.locator('.readme img').evaluateAll(images => images.length > 0 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
     await noOverflow(page);
+  }
+  expect(errors).toEqual([]);
+});
+
+test('Weekly Library has its own VFA identity, PAK and intact asset previews', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  for (const width of [1440, 390, 320]) {
+    await page.setViewportSize({ width, height: 960 });
+    await page.goto('./?id=weekly-library');
+    await expect(page.locator('.detail-heading h1')).toHaveText('Weekly_Library');
+    await expect(page.locator('.readme')).toContainText('179 项资产');
+    await expect(page.locator('.readme')).toContainText('weekly_library');
+    await expect(page.locator('.readme')).toContainText('163 项植被');
+    await expect(page.getByRole('link', { name: /下载 .vfa/ })).toHaveAttribute('href', /releases\/download\/assets-weekly-library-v1.0.0\/Weekly_Library_1024.vfa$/);
+    await expect(page.locator('.related-section').getByRole('link', { name: 'Weekly_Library_1024.pak', exact: true })).toHaveAttribute('href', 'https://pan.baidu.com/s/1zZZEnBxxpjTkVcc7VYlbcQ?pwd=ki35');
+    await expect.poll(() => page.locator('.detail-preview img, .readme img').evaluateAll(images => images.length === 2 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
+    await page.locator('.readme img').scrollIntoViewIfNeeded();
+    await page.locator('.readme img').evaluate(image => image.decode());
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    await noOverflow(page);
+    await page.screenshot({ path: `verification/weekly-library-${width}.png`, fullPage: true });
   }
   expect(errors).toEqual([]);
 });
