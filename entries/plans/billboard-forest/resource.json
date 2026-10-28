@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "billboard-forest",
+  "type": "plans",
+  "name": "影像面片树",
+  "summary": "面向地形影像与大面积林地的种植预设，仅启用主景植被，搭配 Weekly 库三种面片树，保存权重、缩放与疏密参数。",
+  "author": "Mr_Pardon",
+  "platforms": ["DTS"],
+  "tags": ["面片树", "地形影像", "林地", "大面积绿地"],
+  "license": "Apache-2.0（方案配置）；模型与 PAK 遵循原资源授权",
+  "cover": "media/cover.png",
+  "recommended": "1.0.0",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "releasedAt": "2026-10-28",
+      "readme": "README.md",
+      "status": "published",
+      "notes": "首个公开方案版本。仅启用主景植被，保存 Weekly 库三种面片树的权重、缩放、参考尺寸与种植参数，铺底植被关闭。",
+      "package": {
+        "identity": "profile_6d700d16ed48_222",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/plan-billboard-forest-v1.0.0/billboard-forest-1.0.0.vfp",
+        "filename": "billboard-forest-1.0.0.vfp",
+        "bytes": 1341,
+        "sha256": "42dac0baff8a7879d6f2c73e5e564917834770b37ad30d9bc8ac73d68dd88972"
+      },
+      "relations": [
+        {
+          "kind": "strategy",
+          "name": "层次生态群落",
+          "resourceId": "layered-ecological-community",
+          "version": "2.2.2",
+          "note": "保存方案时使用的策略版本；导入后由客户端解析兼容且已信任的安装版本。"
+        },
+        {
+          "kind": "source-catalog",
+          "name": "Weekly_Library",
+          "resourceId": "weekly-library",
+          "version": "1.0.0",
+          "note": "三种面片树的来源与继续选材的入口。VFP 已携带配置快照，来源资产库不是方案执行的额外安装门槛。"
+        },
+        {
+          "kind": "pak",
+          "name": "Weekly_Library_1024.pak",
+          "url": "https://pan.baidu.com/s/1zZZEnBxxpjTkVcc7VYlbcQ?pwd=ki35",
+          "note": "百度网盘，提取码 ki35。请在 DTS 中准备对应模型资源。"
+        }
+      ]
+    }
+  ]
+}
