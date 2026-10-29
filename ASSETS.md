@@ -45,6 +45,10 @@ Trees、Shrub、Sprout 图标、角色配色、半透明区域和线框标记，
 原样保留图像字节、尺寸与构图，用于对应方案的真实效果展示。
 封面不随 VFP 打包，画面中的植被、地形、影像、水体等素材沿用原资源授权。
 
+`entries/plans/general-greenery/media/cover.png` 为维护者提供的“通用绿植铺设.png”，
+原样保留图像字节、尺寸与构图，用于对应方案的真实效果展示。
+封面不随 VFP 打包，画面中的植被、建筑、铺装等场景素材沿用原资源授权。
+
 `entries/assets/weekly-library/media/cover-collage.jpg` 使用 Weekly_Library 内的
 棕榈_03、五桠果_01_Med、棕榈_01、荷花_01_Ultra 四张原始缩略图，经无缝方形网格排版输出为 JPEG。
 封面为 1360 × 1020 像素，各图片区域保持原比例，不放大原图、不添加留边或分隔线。

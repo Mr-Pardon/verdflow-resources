@@ -116,11 +116,12 @@ test('published plans show presets and navigate to their strategy and source cat
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 960 });
     await page.goto('./?type=plans');
-    await expect(page.locator('.resource-card')).toHaveCount(3);
+    await expect(page.locator('.resource-card')).toHaveCount(4);
     await expect(page.locator('.resource-card').filter({ hasText: '花坛点景' })).toHaveCount(1);
     await expect(page.locator('.resource-card').filter({ hasText: '草坪铺设' })).toHaveCount(1);
     await expect(page.locator('.resource-card').filter({ hasText: '影像面片树' })).toHaveCount(1);
-    await expect.poll(() => page.locator('.resource-cover img').evaluateAll(images => images.length === 3 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
+    await expect(page.locator('.resource-card').filter({ hasText: '通用绿植铺设' })).toHaveCount(1);
+    await expect.poll(() => page.locator('.resource-cover img').evaluateAll(images => images.length === 4 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
     await noOverflow(page);
     await page.screenshot({ path: `verification/published-plans-${width}.png`, fullPage: true });
     for (const id of ['flowerbed-accents', 'lawn-cover']) {
@@ -169,6 +170,48 @@ test('billboard forest plan links to Weekly models and layered community without
   await page.getByRole('searchbox', { name: '搜索资源' }).fill('面片树');
   await expect(page.locator('.resource-card')).toHaveCount(1);
   await expect(page.locator('.resource-card')).toContainText('影像面片树');
+  expect(errors).toEqual([]);
+});
+
+test('general greenery plan shows its three trees, original cover and Weekly resource links', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  for (const width of [1440, 900, 390, 320]) {
+    await page.setViewportSize({ width, height: 960 });
+    await page.goto('./?type=plans&id=general-greenery');
+    await expect(page.locator('.detail-heading h1')).toHaveText('通用绿植铺设');
+    await expect(page.locator('.detail-byline')).toContainText('Mr_Pardon');
+    await expect(page.locator('.readme')).toContainText('本方案不生成草坪或灌木');
+    await expect(page.locator('.readme')).toContainText('来源资产库设计：飞渡DTS');
+    const rows = page.locator('.readme table').first().locator('tbody tr');
+    await expect(rows).toHaveCount(3);
+    await expect(rows.nth(0)).toContainText('阔叶_02_Med');
+    await expect(rows.nth(0)).toContainText('55%-100%');
+    await expect(rows.nth(0)).toContainText('52%');
+    await expect(rows.nth(1)).toContainText('阔叶_01_Med');
+    await expect(rows.nth(1)).toContainText('19%');
+    await expect(rows.nth(2)).toContainText('五桠果_01_Med');
+    await expect(rows.nth(2)).toContainText('29%');
+    await expect(page.locator('.readme table').nth(1)).toContainText('15 米');
+    await expect(page.locator('.readme table').nth(1)).toContainText('78%');
+    await expect(page.locator('.readme table').nth(1)).toContainText('40 米');
+    await expect(page.getByRole('link', { name: /下载 .vfp/ })).toHaveAttribute('href', /\/plan-general-greenery-v1.0.0\/general-greenery-1.0.0.vfp$/);
+    await expect(page.locator('.related-section').getByRole('link', { name: 'Weekly_Library_1024.pak', exact: true })).toHaveAttribute('href', 'https://pan.baidu.com/s/1zZZEnBxxpjTkVcc7VYlbcQ?pwd=ki35');
+    await page.locator('.readme img').scrollIntoViewIfNeeded();
+    await page.locator('.readme img').evaluate(image => image.decode());
+    await expect.poll(() => page.locator('.detail-preview img, .readme img').evaluateAll(images => images.length === 2 && images.every(image => image.complete && image.naturalWidth === 1844 && image.naturalHeight === 1019))).toBe(true);
+    await noOverflow(page);
+    await page.screenshot({ path: `verification/plan-general-greenery-${width}.png`, fullPage: true });
+  }
+  await page.locator('.related-section').getByRole('link', { name: '层次生态群落', exact: true }).click();
+  await expect(page.locator('.detail-heading h1')).toHaveText('层次生态群落');
+  await page.goBack();
+  await page.locator('.related-section').getByRole('link', { name: 'Weekly_Library', exact: true }).click();
+  await expect(page.locator('.detail-heading h1')).toHaveText('Weekly_Library');
+  await page.goto('./?type=plans');
+  await page.getByRole('searchbox', { name: '搜索资源' }).fill('通用绿植');
+  await expect(page.locator('.resource-card')).toHaveCount(1);
+  await expect(page.locator('.resource-card')).toContainText('通用绿植铺设');
   expect(errors).toEqual([]);
 });
 

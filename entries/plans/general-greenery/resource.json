@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "general-greenery",
+  "type": "plans",
+  "name": "通用绿植铺设",
+  "summary": "面向园区与一般绿地的乔木混合种植预设，搭配 Weekly 库两种阔叶树与五桠果，保存权重、缩放和自然疏密参数，仅启用主景植被。",
+  "author": "Mr_Pardon",
+  "platforms": ["DTS"],
+  "tags": ["乔木", "阔叶树", "混合林地", "绿地铺设"],
+  "license": "Apache-2.0（方案配置）；模型与 PAK 遵循原资源授权",
+  "cover": "media/cover.png",
+  "recommended": "1.0.0",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "releasedAt": "2026-10-29",
+      "readme": "README.md",
+      "status": "published",
+      "notes": "首个公开方案版本。仅启用主景植被，保存阔叶_02_Med、阔叶_01_Med、五桠果_01_Med 的权重、缩放、参考尺寸与效果参数，铺底植被关闭。",
+      "package": {
+        "identity": "profile_76808072448a",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/plan-general-greenery-v1.0.0/general-greenery-1.0.0.vfp",
+        "filename": "general-greenery-1.0.0.vfp",
+        "bytes": 1415,
+        "sha256": "2d6fd4069f85ec6c3dfbb3b8fef370e78924e4da8dff9d58f4d38e097f8580ab"
+      },
+      "relations": [
+        {
+          "kind": "strategy",
+          "name": "层次生态群落",
+          "resourceId": "layered-ecological-community",
+          "version": "2.2.2",
+          "note": "保存方案时使用的策略版本；导入后由客户端解析兼容且已信任的安装版本。"
+        },
+        {
+          "kind": "source-catalog",
+          "name": "Weekly_Library",
+          "resourceId": "weekly-library",
+          "version": "1.0.0",
+          "note": "三种乔木的来源与继续选材的入口。VFP 已携带配置快照，来源资产库不是方案执行的额外安装门槛。"
+        },
+        {
+          "kind": "pak",
+          "name": "Weekly_Library_1024.pak",
+          "url": "https://pan.baidu.com/s/1zZZEnBxxpjTkVcc7VYlbcQ?pwd=ki35",
+          "note": "百度网盘，提取码 ki35。请在 DTS 中准备对应模型资源。"
+        }
+      ]
+    }
+  ]
+}
