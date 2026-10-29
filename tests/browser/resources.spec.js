@@ -4,6 +4,24 @@ import { record } from '../fixtures.mjs';
 async function noOverflow(page) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
 }
+
+test('both client manifest versions and dependency index are published under the site base', async ({ request }) => {
+  const documents = [];
+  for (const name of ['starter-resources.json', 'starter-resources-v2.json', 'import-index.json']) {
+    const response = await request.get(`./${name}`);
+    expect(response.ok()).toBe(true);
+    documents.push(await response.json());
+  }
+  const [legacy, starter, index] = documents;
+  expect(legacy.schemaVersion).toBe(1);
+  expect(starter.schemaVersion).toBe(2);
+  expect(index.schemaVersion).toBe(1);
+  expect(legacy.resources.every(item => ['assets', 'strategies'].includes(item.kind))).toBe(true);
+  expect(starter.resources.some(item => item.kind === 'plans' && item.plan.catalogs.length)).toBe(true);
+  for (const item of starter.resources) {
+    expect(index.resources).toContainEqual(item);
+  }
+});
 test('empty catalog, categories, contribution and responsive assets', async ({ page }) => {
   await page.route('**/catalog.json', route => route.fulfill({ json: { schemaVersion: 1, resources: [] } }));
   const errors = []; page.on('pageerror', error => errors.push(error.message));

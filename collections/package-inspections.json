@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "revision": "d95de5619db3936bc691b435f39f3dfb300ea0601056756ed70dd1916029c0b5",
+  "resources": [
+    {
+      "id": "dts-library",
+      "name": "DTS_Library_v6",
+      "kind": "assets",
+      "version": "6.0.0",
+      "identity": "dts_library",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/assets-dts-library-v6.0.0/DTS_Library_v6.vfa",
+      "filename": "DTS_Library_v6.vfa",
+      "bytes": 8723685,
+      "sha256": "c07ceab130dc0576329557bbe3609d8baa9ab31d393ad5a0ae6af9c275770396",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=assets&id=dts-library&version=6.0.0",
+      "status": "published",
+      "target_type": "dts"
+    },
+    {
+      "id": "weekly-library",
+      "name": "Weekly_Library",
+      "kind": "assets",
+      "version": "1.0.0",
+      "identity": "weekly_library",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/assets-weekly-library-v1.0.0/Weekly_Library_1024.vfa",
+      "filename": "Weekly_Library_1024.vfa",
+      "bytes": 26568983,
+      "sha256": "b2e2728bbc4b1164229d8e6e211e36915e4c3f337489e34b1bb777139d48c077",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=assets&id=weekly-library&version=1.0.0",
+      "status": "published",
+      "target_type": "dts"
+    },
+    {
+      "id": "billboard-forest",
+      "name": "影像面片树",
+      "kind": "plans",
+      "version": "1.0.0",
+      "identity": "profile_6d700d16ed48_222",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/plan-billboard-forest-v1.0.0/billboard-forest-1.0.0.vfp",
+      "filename": "billboard-forest-1.0.0.vfp",
+      "bytes": 1341,
+      "sha256": "42dac0baff8a7879d6f2c73e5e564917834770b37ad30d9bc8ac73d68dd88972",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=plans&id=billboard-forest&version=1.0.0",
+      "status": "published",
+      "plan": {
+        "profile_id": "profile_6d700d16ed48_222",
+        "semantic_hash": "sha256:2b293144b46b6b813131bb22c3bf00ca54ad970f00efcfe04b7dc799597ce086",
+        "strategy_id": "layered_ecological_community",
+        "strategy_version": "2.2.2",
+        "strategy_hash": "sha256:4e8977e9894759bdfbbb0b05e93917047a559eb345ca9b815de92ce4769667ab",
+        "catalogs": [
+          {
+            "target_type": "dts",
+            "catalog_id": "weekly_library"
+          }
+        ]
+      }
+    },
+    {
+      "id": "flowerbed-accents",
+      "name": "花坛点景",
+      "kind": "plans",
+      "version": "1.0.0",
+      "identity": "profile_8e04104a367a",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/plan-flowerbed-accents-v1.0.0/flowerbed-accents-1.0.0.vfp",
+      "filename": "flowerbed-accents-1.0.0.vfp",
+      "bytes": 1845,
+      "sha256": "3cf17c29517d289d14a111cb30690198f7dd068c83e929cbdd04e943bfa505de",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=plans&id=flowerbed-accents&version=1.0.0",
+      "status": "published",
+      "plan": {
+        "profile_id": "profile_8e04104a367a",
+        "semantic_hash": "sha256:9f8ffff545d7cbe565404e8fdcce2ef795c00af1f726f5be4add9ce198b91fb2",
+        "strategy_id": "lawn_feature_groups",
+        "strategy_version": "1.0.2",
+        "strategy_hash": "sha256:9ce1cea7970775f0b9cfb10fbff58f97f2c81831d64eac7a71a8cc5039e94eb5",
+        "catalogs": [
+          {
+            "target_type": "dts",
+            "catalog_id": "dts_library"
+          }
+        ]
+      }
+    },
+    {
+      "id": "general-greenery",
+      "name": "通用绿植铺设",
+      "kind": "plans",
+      "version": "1.0.0",
+      "identity": "profile_76808072448a",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/plan-general-greenery-v1.0.0/general-greenery-1.0.0.vfp",
+      "filename": "general-greenery-1.0.0.vfp",
+      "bytes": 1415,
+      "sha256": "2d6fd4069f85ec6c3dfbb3b8fef370e78924e4da8dff9d58f4d38e097f8580ab",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=plans&id=general-greenery&version=1.0.0",
+      "status": "published",
+      "plan": {
+        "profile_id": "profile_76808072448a",
+        "semantic_hash": "sha256:04b5e6938e2af2ec0fc56afb997ea91718c3514068eb4310ff20eb230cab3bfd",
+        "strategy_id": "layered_ecological_community",
+        "strategy_version": "2.2.2",
+        "strategy_hash": "sha256:4e8977e9894759bdfbbb0b05e93917047a559eb345ca9b815de92ce4769667ab",
+        "catalogs": [
+          {
+            "target_type": "dts",
+            "catalog_id": "weekly_library"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lawn-cover",
+      "name": "草坪铺设",
+      "kind": "plans",
+      "version": "1.0.0",
+      "identity": "profile_91af56bf92e6",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/plan-lawn-cover-v1.0.0/lawn-cover-1.0.0.vfp",
+      "filename": "lawn-cover-1.0.0.vfp",
+      "bytes": 1192,
+      "sha256": "46aba28db6aa73f2b8777599fad1b8c14cdc8347b708035bc7b04f918c2ef9b8",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=plans&id=lawn-cover&version=1.0.0",
+      "status": "published",
+      "plan": {
+        "profile_id": "profile_91af56bf92e6",
+        "semantic_hash": "sha256:b6092f518b51b2b8bbeb55e95074dba68d5b7ee2d71b7176ee1fa8a51f1e2f9c",
+        "strategy_id": "lawn_feature_groups",
+        "strategy_version": "1.0.2",
+        "strategy_hash": "sha256:9ce1cea7970775f0b9cfb10fbff58f97f2c81831d64eac7a71a8cc5039e94eb5",
+        "catalogs": [
+          {
+            "target_type": "dts",
+            "catalog_id": "dts_library"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lawn-feature-groups",
+      "name": "草坪点景组团",
+      "kind": "strategies",
+      "version": "1.0.2",
+      "identity": "lawn_feature_groups",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/strategy-lawn-feature-groups-v1.0.2/lawn_feature_groups-1.0.2.vfs",
+      "filename": "lawn_feature_groups-1.0.2.vfs",
+      "bytes": 46119,
+      "sha256": "63a75b006a620728c56fb37aa772ccf062ea70c1d9ee4d518ea2eb5d8ec7c828",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=strategies&id=lawn-feature-groups&version=1.0.2",
+      "status": "published",
+      "strategy_hash": "sha256:9ce1cea7970775f0b9cfb10fbff58f97f2c81831d64eac7a71a8cc5039e94eb5"
+    },
+    {
+      "id": "layered-ecological-community",
+      "name": "层次生态群落",
+      "kind": "strategies",
+      "version": "2.2.2",
+      "identity": "layered_ecological_community",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/strategy-layered-ecological-community-v2.2.2/layered_ecological_community-2.2.2.vfs",
+      "filename": "layered_ecological_community-2.2.2.vfs",
+      "bytes": 40796,
+      "sha256": "823065f60787c28ae7039732cb27582de1523d0d412ea3cb34d8bbe56b577c2d",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=strategies&id=layered-ecological-community&version=2.2.2",
+      "status": "published",
+      "strategy_hash": "sha256:4e8977e9894759bdfbbb0b05e93917047a559eb345ca9b815de92ce4769667ab"
+    },
+    {
+      "id": "universal-street-tree",
+      "name": "通用行道树",
+      "kind": "strategies",
+      "version": "2.0.2",
+      "identity": "universal_street_tree",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/strategy-universal-street-tree-v2.0.2/universal_street_tree-2.0.2.vfs",
+      "filename": "universal_street_tree-2.0.2.vfs",
+      "bytes": 33807,
+      "sha256": "fa840e589fef8d69bed82dc2e6247c9b65c78092af5098367af207fef70ec514",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=strategies&id=universal-street-tree&version=2.0.2",
+      "status": "published",
+      "strategy_hash": "sha256:c0faab5196f675db82825581195d6f792c41d54617e936920660775f2c9d09d2"
+    }
+  ]
+}

@@ -2,8 +2,13 @@
   "schemaVersion": 1,
   "resources": [
     { "id": "dts-library", "version": "recommended" },
+    { "id": "weekly-library", "version": "recommended" },
     { "id": "layered-ecological-community", "version": "recommended" },
     { "id": "lawn-feature-groups", "version": "recommended" },
-    { "id": "universal-street-tree", "version": "recommended" }
+    { "id": "universal-street-tree", "version": "recommended" },
+    { "id": "flowerbed-accents", "version": "recommended" },
+    { "id": "lawn-cover", "version": "recommended" },
+    { "id": "billboard-forest", "version": "recommended" },
+    { "id": "general-greenery", "version": "recommended" }
   ]
 }
