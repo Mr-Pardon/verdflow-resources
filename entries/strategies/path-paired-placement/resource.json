@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "path-paired-placement",
+  "type": "strategies",
+  "name": "沿线树池种植",
+  "summary": "需 VerdFlow 1.1.0 或更高版本。沿开放折线等距布置植被和可选树池，支持起点留距、转角圆滑与独立缩放。",
+  "author": "Mr_Pardon",
+  "platforms": ["DTS"],
+  "tags": ["沿线种植", "树池", "开放折线", "参数示例"],
+  "license": "Apache-2.0",
+  "cover": "media/cover-role-guide.png",
+  "recommended": "1.0.0",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "releasedAt": "2026-11-04",
+      "readme": "README.md",
+      "status": "published",
+      "notes": "首个公开版本，按已安装策略原样导出。仅支持开放折线，需 VerdFlow 1.1.0 或更高版本的 DTS 实时沿线种植入口。",
+      "package": {
+        "identity": "path_paired_placement",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/strategy-path-paired-placement-v1.0.0/path_paired_placement-1.0.0.vfs",
+        "filename": "path_paired_placement-1.0.0.vfs",
+        "bytes": 12105,
+        "sha256": "36c92e1701d8c4b202fe30b6df5e97735cd92224aae27d899e4c5b6445b2e880"
+      },
+      "relations": []
+    }
+  ]
+}

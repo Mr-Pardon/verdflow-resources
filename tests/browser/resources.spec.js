@@ -21,6 +21,12 @@ test('both client manifest versions and dependency index are published under the
   for (const item of starter.resources) {
     expect(index.resources).toContainEqual(item);
   }
+  expect(index.resources).toContainEqual(expect.objectContaining({
+    id: 'path-paired-placement', kind: 'strategies', version: '1.0.0', identity: 'path_paired_placement',
+    strategy_hash: expect.stringMatching(/^sha256:[a-f0-9]{64}$/),
+  }));
+  expect(legacy.resources.some(item => item.id === 'path-paired-placement')).toBe(false);
+  expect(starter.resources.some(item => item.id === 'path-paired-placement')).toBe(false);
 });
 test('empty catalog, categories, contribution and responsive assets', async ({ page }) => {
   await page.route('**/catalog.json', route => route.fulfill({ json: { schemaVersion: 1, resources: [] } }));
@@ -69,9 +75,9 @@ test('published resources, thumbnails and PAK links work across viewport sizes',
     await noOverflow(page);
     await page.screenshot({ path: `verification/published-detail-${width}.png`, fullPage: true });
     await page.goto('./?type=strategies');
-    await expect(page.locator('.resource-card')).toHaveCount(3);
+    await expect(page.locator('.resource-card')).toHaveCount(4);
     await expect(page.locator('.resource-card').filter({ hasText: '通用自然聚落' })).toHaveCount(0);
-    await expect.poll(() => page.locator('.resource-cover img').evaluateAll(images => images.length === 3 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
+    await expect.poll(() => page.locator('.resource-cover img').evaluateAll(images => images.length === 4 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
     await noOverflow(page);
     await page.screenshot({ path: `verification/published-strategies-${width}.png`, fullPage: true });
   }
@@ -84,6 +90,23 @@ test('published resources, thumbnails and PAK links work across viewport sizes',
     await noOverflow(page);
   }
   expect(errors).toEqual([]);
+});
+
+test('path paired strategy shows the minimum client version and role diagram', async ({ page }) => {
+  for (const width of [1440, 390, 320]) {
+    await page.setViewportSize({ width, height: 960 });
+    await page.goto('./?type=strategies&id=path-paired-placement');
+    await expect(page.locator('.detail-heading h1')).toHaveText('沿线树池种植');
+    await expect(page.locator('.detail-heading')).toContainText('VerdFlow 1.1.0 或更高版本');
+    await expect(page.locator('.readme')).toContainText('输入必须为开放折线');
+    await expect(page.locator('.readme')).toContainText('沿路径切线排列');
+    await expect(page.getByRole('link', { name: /下载 .vfs/ })).toHaveAttribute('href', /\/strategy-path-paired-placement-v1.0.0\/path_paired_placement-1.0.0.vfs$/);
+    await page.locator('.readme img').scrollIntoViewIfNeeded();
+    await page.locator('.readme img').evaluate(image => image.decode());
+    await expect.poll(() => page.locator('.detail-preview img, .readme img').evaluateAll(images => images.length === 2 && images.every(image => image.complete && image.naturalWidth === 1200 && image.naturalHeight === 900))).toBe(true);
+    await noOverflow(page);
+    await page.screenshot({ path: `verification/path-paired-placement-${width}.png`, fullPage: true });
+  }
 });
 
 test('Weekly Library has its own VFA identity, PAK and intact asset previews', async ({ page }) => {

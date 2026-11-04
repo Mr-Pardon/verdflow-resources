@@ -36,6 +36,10 @@ Trees、Shrub、Sprout 图标、角色配色、半透明区域和线框标记，
 未采用的景观模型风格封面仅保留为本地草稿，不进入公开内容目录。
 策略 README 和其中的 `media/roles.webp` 角色设计图继续保留原样。
 
+`entries/strategies/path-paired-placement/media/cover-role-guide.png` 延用浅底线稿与角色图例，
+以开放路径、Lucide Trees 图标与共位置的树池方框表示等距布置。封面由静态示意排版输出，
+不包含真实场景、植物模型或生成结果，不代表实际尺度。
+
 `entries/plans/flowerbed-accents/media/cover.jpg` 与
 `entries/plans/lawn-cover/media/cover.jpg` 分别来自维护者提供的“花坛点景.png”和“草坪铺设.png”。
 仅进行 JPEG 编码压缩，保留原图尺寸、构图和内容，用于相应方案的种植效果展示。

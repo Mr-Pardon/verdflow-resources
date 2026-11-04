@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "d95de5619db3936bc691b435f39f3dfb300ea0601056756ed70dd1916029c0b5",
+  "revision": "455b634b8fe20276965b1991e5df98b59ed10ca6f5f03618bf388db6d2b79f23",
   "resources": [
     {
       "id": "dts-library",
@@ -161,6 +161,20 @@
       "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=strategies&id=layered-ecological-community&version=2.2.2",
       "status": "published",
       "strategy_hash": "sha256:4e8977e9894759bdfbbb0b05e93917047a559eb345ca9b815de92ce4769667ab"
+    },
+    {
+      "id": "path-paired-placement",
+      "name": "沿线树池种植",
+      "kind": "strategies",
+      "version": "1.0.0",
+      "identity": "path_paired_placement",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/strategy-path-paired-placement-v1.0.0/path_paired_placement-1.0.0.vfs",
+      "filename": "path_paired_placement-1.0.0.vfs",
+      "bytes": 12105,
+      "sha256": "36c92e1701d8c4b202fe30b6df5e97735cd92224aae27d899e4c5b6445b2e880",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=strategies&id=path-paired-placement&version=1.0.0",
+      "status": "published",
+      "strategy_hash": "sha256:a586d3aefdfabe45e3e00eed4cd4cb29f99ee147d5f2b1fa971e61cad5289392"
     },
     {
       "id": "universal-street-tree",
