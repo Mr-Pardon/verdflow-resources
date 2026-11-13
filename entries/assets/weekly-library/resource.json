@@ -3,14 +3,36 @@
   "id": "weekly-library",
   "type": "assets",
   "name": "Weekly_Library",
-  "summary": "169 项植被与 10 项小品，涵盖乔木、棕榈、灌木、花草等 5 个分类，附缩略图、部分参考尺寸及配套 PAK 入口。",
+  "summary": "167 项植被与 10 项小品，涵盖乔木、棕榈、灌木、花草、面片树等 6 个分类，附缩略图、部分参考尺寸及 1112 PAK 入口。",
   "author": "飞渡DTS",
   "platforms": ["DTS"],
-  "tags": ["乔木", "棕榈", "灌木", "花草", "小品", "PAK"],
+  "tags": ["乔木", "棕榈", "灌木", "花草", "面片树", "小品", "PAK"],
   "license": "模型、缩略图与 PAK 的使用遵循原资源授权",
   "cover": "media/cover-collage.jpg",
-  "recommended": "1.0.0",
+  "recommended": "1.1.0",
   "versions": [
+    {
+      "version": "1.1.0",
+      "releasedAt": "2026-11-13",
+      "readme": "versions/1.1.0/README.md",
+      "status": "published",
+      "notes": "同步 Weekly_Library_1112.pak 的统计清单：177 项资产、6 个分类，新增 6 项、移除 8 项，保留 171 项原 ID 与 155 项已有参考尺寸。",
+      "package": {
+        "identity": "weekly_library",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/assets-weekly-library-v1.1.0/Weekly_Library_1112.vfa",
+        "filename": "Weekly_Library_1112.vfa",
+        "bytes": 5791957,
+        "sha256": "231ea4f73169a7872db06074fa636dc46b753f179b1c8c9876ac0fba73eec427"
+      },
+      "relations": [
+        {
+          "kind": "pak",
+          "name": "Weekly_Library_1112.pak",
+          "url": "https://pan.baidu.com/s/1vh8MZcOAxIEBknDC1Qp88Q?pwd=ih16",
+          "note": "百度网盘，提取码 ih16。模型与 PAK 的使用遵循原资源授权；请在 DTS 中另行准备对应模型。"
+        }
+      ]
+    },
     {
       "version": "1.0.0",
       "releasedAt": "2026-10-26",

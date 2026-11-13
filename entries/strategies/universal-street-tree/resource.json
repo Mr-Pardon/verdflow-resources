@@ -15,8 +15,23 @@
   ],
   "license": "Apache-2.0",
   "cover": "media/cover-role-guide.png",
-  "recommended": "2.0.2",
+  "recommended": "2.1.1",
   "versions": [
+    {
+      "version": "2.1.1",
+      "releasedAt": "2026-11-13",
+      "readme": "versions/2.1.1/README.md",
+      "status": "published",
+      "notes": "开放乔木与灌木沿线间距、三排横向排距等 5 项参数；修复三排外侧灌木达到最小边界净距时因浮点误差漏点的问题。保留原有角色和地块输入。",
+      "package": {
+        "identity": "universal_street_tree",
+        "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/strategy-universal-street-tree-v2.1.1/universal_street_tree-2.1.1.vfs",
+        "filename": "universal_street_tree-2.1.1.vfs",
+        "bytes": 36393,
+        "sha256": "6fe0fff5921af50f19e023233429f172db574811e8dce5c2bf950e05d2d09786"
+      },
+      "relations": []
+    },
     {
       "version": "2.0.2",
       "releasedAt": "2026-10-22",

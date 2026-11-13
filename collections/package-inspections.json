@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "455b634b8fe20276965b1991e5df98b59ed10ca6f5f03618bf388db6d2b79f23",
+  "revision": "4ac2249452e63ed3c6d6ce97fc7973181fd529e7e60dc876bf9d6056b84ee3d1",
   "resources": [
     {
       "id": "dts-library",
@@ -20,13 +20,13 @@
       "id": "weekly-library",
       "name": "Weekly_Library",
       "kind": "assets",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "identity": "weekly_library",
-      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/assets-weekly-library-v1.0.0/Weekly_Library_1024.vfa",
-      "filename": "Weekly_Library_1024.vfa",
-      "bytes": 26568983,
-      "sha256": "b2e2728bbc4b1164229d8e6e211e36915e4c3f337489e34b1bb777139d48c077",
-      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=assets&id=weekly-library&version=1.0.0",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/assets-weekly-library-v1.1.0/Weekly_Library_1112.vfa",
+      "filename": "Weekly_Library_1112.vfa",
+      "bytes": 5791957,
+      "sha256": "231ea4f73169a7872db06074fa636dc46b753f179b1c8c9876ac0fba73eec427",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=assets&id=weekly-library&version=1.1.0",
       "status": "published",
       "target_type": "dts"
     },
@@ -175,6 +175,20 @@
       "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=strategies&id=path-paired-placement&version=1.0.0",
       "status": "published",
       "strategy_hash": "sha256:a586d3aefdfabe45e3e00eed4cd4cb29f99ee147d5f2b1fa971e61cad5289392"
+    },
+    {
+      "id": "universal-street-tree",
+      "name": "通用行道树",
+      "kind": "strategies",
+      "version": "2.1.1",
+      "identity": "universal_street_tree",
+      "url": "https://github.com/Mr-Pardon/verdflow-resources/releases/download/strategy-universal-street-tree-v2.1.1/universal_street_tree-2.1.1.vfs",
+      "filename": "universal_street_tree-2.1.1.vfs",
+      "bytes": 36393,
+      "sha256": "6fe0fff5921af50f19e023233429f172db574811e8dce5c2bf950e05d2d09786",
+      "page_url": "https://mr-pardon.github.io/verdflow-resources/?type=strategies&id=universal-street-tree&version=2.1.1",
+      "status": "published",
+      "strategy_hash": "sha256:49b06993501aab4841ffa1d01f19dad10d1a591e474ad7fdd9e08fdd6545d01e"
     },
     {
       "id": "universal-street-tree",

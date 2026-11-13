@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { record } from '../fixtures.mjs';
 
+const weekly1112Pak = 'https://pan.baidu.com/s/1vh8MZcOAxIEBknDC1Qp88Q?pwd=ih16';
+
 async function noOverflow(page) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
 }
@@ -18,6 +20,10 @@ test('both client manifest versions and dependency index are published under the
   expect(index.schemaVersion).toBe(1);
   expect(legacy.resources.every(item => ['assets', 'strategies'].includes(item.kind))).toBe(true);
   expect(starter.resources.some(item => item.kind === 'plans' && item.plan.catalogs.length)).toBe(true);
+  for (const manifest of [legacy, starter]) {
+    expect(manifest.resources).toContainEqual(expect.objectContaining({ id: 'weekly-library', version: '1.1.0' }));
+    expect(manifest.resources).toContainEqual(expect.objectContaining({ id: 'universal-street-tree', version: '2.1.1' }));
+  }
   for (const item of starter.resources) {
     expect(index.resources).toContainEqual(item);
   }
@@ -118,11 +124,11 @@ test('Weekly Library has its own VFA identity, PAK and intact asset previews', a
     await expect(page.locator('.detail-heading h1')).toHaveText('Weekly_Library');
     await expect(page.locator('.detail-byline')).toContainText('飞渡DTS');
     await expect(page.locator('.readme')).toContainText('资产库设计：飞渡DTS');
-    await expect(page.locator('.readme')).toContainText('179 项资产');
+    await expect(page.locator('.readme')).toContainText('177 项资产');
     await expect(page.locator('.readme')).toContainText('weekly_library');
-    await expect(page.locator('.readme')).toContainText('163 项植被');
-    await expect(page.getByRole('link', { name: /下载 .vfa/ })).toHaveAttribute('href', /releases\/download\/assets-weekly-library-v1.0.0\/Weekly_Library_1024.vfa$/);
-    await expect(page.locator('.related-section').getByRole('link', { name: 'Weekly_Library_1024.pak', exact: true })).toHaveAttribute('href', 'https://pan.baidu.com/s/1zZZEnBxxpjTkVcc7VYlbcQ?pwd=ki35');
+    await expect(page.locator('.readme')).toContainText('155 项沿用');
+    await expect(page.getByRole('link', { name: /下载 .vfa/ })).toHaveAttribute('href', /releases\/download\/assets-weekly-library-v1\.1\.0\/Weekly_Library_1112\.vfa$/);
+    await expect(page.locator('.related-section').getByRole('link', { name: 'Weekly_Library_1112.pak', exact: true })).toHaveAttribute('href', weekly1112Pak);
     await expect.poll(() => page.locator('.detail-preview img, .readme img').evaluateAll(images => images.length === 2 && images.every(img => img.complete && img.naturalWidth > 0))).toBe(true);
     await page.locator('.readme img').scrollIntoViewIfNeeded();
     await page.locator('.readme img').evaluate(image => image.decode());
@@ -130,7 +136,22 @@ test('Weekly Library has its own VFA identity, PAK and intact asset previews', a
     await noOverflow(page);
     await page.screenshot({ path: `verification/weekly-library-${width}.png`, fullPage: true });
   }
+  await page.goto('./?id=weekly-library&version=1.0.0');
+  await expect(page.locator('.readme')).toContainText('179 项资产');
+  await expect(page.locator('.related-section').getByRole('link', { name: 'Weekly_Library_1024.pak', exact: true })).toHaveAttribute('href', 'https://pan.baidu.com/s/1zZZEnBxxpjTkVcc7VYlbcQ?pwd=ki35');
   expect(errors).toEqual([]);
+});
+
+test('street tree details distinguish the updated strategy from its historical version', async ({ page }) => {
+  await page.goto('./?type=strategies&id=universal-street-tree');
+  await expect(page.locator('.readme')).toContainText('浮点误差漏点');
+  await expect(page.getByRole('link', { name: /下载 .vfs/ })).toHaveAttribute('href', /\/strategy-universal-street-tree-v2\.1\.1\/universal_street_tree-2\.1\.1\.vfs$/);
+  const image = page.locator('.readme img');
+  await image.scrollIntoViewIfNeeded();
+  await image.evaluate(img => img.decode());
+  await page.goto('./?type=strategies&id=universal-street-tree&version=2.0.2');
+  await expect(page.locator('.readme')).toContainText('生成算法不变');
+  await expect(page.getByRole('link', { name: /下载 .vfs/ })).toHaveAttribute('href', /\/strategy-universal-street-tree-v2\.0\.2\/universal_street_tree-2\.0\.2\.vfs$/);
 });
 
 test('contribution page links to all three submission examples and the Issue form', async ({ page }) => {
@@ -196,7 +217,7 @@ test('billboard forest plan links to Weekly models and layered community without
     await expect(page.locator('.readme')).toContainText('16.5 米');
     await expect(page.locator('.readme')).toContainText('来源资产库设计：飞渡DTS');
     await expect(page.getByRole('link', { name: /下载 .vfp/ })).toHaveAttribute('href', /\/plan-billboard-forest-v1.0.0\/billboard-forest-1.0.0.vfp$/);
-    await expect(page.locator('.related-section').getByRole('link', { name: 'Weekly_Library_1024.pak', exact: true })).toHaveAttribute('href', 'https://pan.baidu.com/s/1zZZEnBxxpjTkVcc7VYlbcQ?pwd=ki35');
+    await expect(page.locator('.related-section').getByRole('link', { name: 'Weekly_Library_1112.pak', exact: true })).toHaveAttribute('href', weekly1112Pak);
     await page.locator('.readme img').scrollIntoViewIfNeeded();
     await expect.poll(() => page.locator('.detail-preview img, .readme img').evaluateAll(images => images.length === 2 && images.every(image => image.complete && image.naturalWidth === 1654 && image.naturalHeight === 1021))).toBe(true);
     await noOverflow(page);
@@ -237,7 +258,7 @@ test('general greenery plan shows its three trees, original cover and Weekly res
     await expect(page.locator('.readme table').nth(1)).toContainText('78%');
     await expect(page.locator('.readme table').nth(1)).toContainText('40 米');
     await expect(page.getByRole('link', { name: /下载 .vfp/ })).toHaveAttribute('href', /\/plan-general-greenery-v1.0.0\/general-greenery-1.0.0.vfp$/);
-    await expect(page.locator('.related-section').getByRole('link', { name: 'Weekly_Library_1024.pak', exact: true })).toHaveAttribute('href', 'https://pan.baidu.com/s/1zZZEnBxxpjTkVcc7VYlbcQ?pwd=ki35');
+    await expect(page.locator('.related-section').getByRole('link', { name: 'Weekly_Library_1112.pak', exact: true })).toHaveAttribute('href', weekly1112Pak);
     await page.locator('.readme img').scrollIntoViewIfNeeded();
     await page.locator('.readme img').evaluate(image => image.decode());
     await expect.poll(() => page.locator('.detail-preview img, .readme img').evaluateAll(images => images.length === 2 && images.every(image => image.complete && image.naturalWidth === 1844 && image.naturalHeight === 1019))).toBe(true);
