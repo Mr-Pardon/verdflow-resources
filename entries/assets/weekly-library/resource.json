@@ -14,7 +14,7 @@
     {
       "version": "1.1.0",
       "releasedAt": "2026-11-13",
-      "readme": "versions/1.1.0/README.md",
+      "readme": "versions/1-1-0/README.md",
       "status": "published",
       "notes": "同步 Weekly_Library_1112.pak 的统计清单：177 项资产、6 个分类，新增 6 项、移除 8 项，保留 171 项原 ID 与 155 项已有参考尺寸。",
       "package": {

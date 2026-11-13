@@ -7,6 +7,20 @@ import { record } from './fixtures.mjs';
 import { validateRecord, readCatalog, containedPath } from '../scripts/catalog.mjs';
 
 test('valid catalog record and explicit recommended release', () => assert.equal(validateRecord(record()).id, 'test.catalog'));
+test('README and cover paths must be readable by published Studio clients', () => {
+  const value = record();
+  for (const readme of ['versions/2.1.1/README.md', '../README.md', 'versions//README.md']) {
+    value.versions[0].readme = readme;
+    assert.throws(() => validateRecord(value), /Studio-incompatible README path/);
+  }
+  value.versions[0].readme = 'versions/2-1-1/README.md';
+  for (const cover of ['media.v2/cover.png', 'media/cover.PNG']) {
+    value.cover = cover;
+    assert.throws(() => validateRecord(value), /Studio-incompatible cover path/);
+  }
+  value.cover = 'media-v2/cover.2.png';
+  assert.doesNotThrow(() => validateRecord(value));
+});
 test('wrong schema, extension, dates, identities and extra fields are rejected', () => {
   for (const change of [{ schemaVersion: 2 }, { id: '../path' }, { surprise: true }, { recommended: '2.0.0' }]) assert.throws(() => validateRecord(record(change)));
   for (const patch of [{ releasedAt: '2026-99-10' }, { status: 'draft' }]) {

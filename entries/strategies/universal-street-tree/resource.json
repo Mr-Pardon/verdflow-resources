@@ -20,7 +20,7 @@
     {
       "version": "2.1.1",
       "releasedAt": "2026-11-13",
-      "readme": "versions/2.1.1/README.md",
+      "readme": "versions/2-1-1/README.md",
       "status": "published",
       "notes": "开放乔木与灌木沿线间距、三排横向排距等 5 项参数；修复三排外侧灌木达到最小边界净距时因浮点误差漏点的问题。保留原有角色和地块输入。",
       "package": {

@@ -11,14 +11,18 @@ addFormats(ajv);
 const validate = ajv.compile(schema);
 const extensions = { assets: '.vfa', strategies: '.vfs', plans: '.vfp' };
 const markdown = new MarkdownIt({ html: false });
+// Keep published paths readable by the Studio 1.2.0 resource center.
+const readmePath = /^(?:[A-Za-z0-9_-]+\/)*[A-Za-z0-9_.-]+\.md$/;
+const coverPath = /^(?:[A-Za-z0-9_-]+\/)*[A-Za-z0-9_.-]+\.(?:png|jpe?g|webp)$/;
 
 export function validateRecord(record) {
   if (!validate(record)) throw new Error(ajv.errorsText(validate.errors));
+  if (record.cover && !coverPath.test(record.cover)) throw new Error(`Studio-incompatible cover path: ${record.cover}`);
   const versions = new Set();
   for (const release of record.versions) {
     if (versions.has(release.version)) throw new Error('Duplicate version');
     versions.add(release.version);
-    if (!release.readme.endsWith('.md')) throw new Error('README must be Markdown');
+    if (!readmePath.test(release.readme)) throw new Error(`Studio-incompatible README path: ${release.readme}`);
     if (extname(release.package.filename) !== extensions[record.type]) throw new Error('Wrong package extension');
     const url = new URL(release.package.url);
     if (url.hostname !== 'github.com' || !/^\/[^/]+\/[^/]+\/releases\/download\/[^/]+\/[^/]+$/.test(url.pathname)

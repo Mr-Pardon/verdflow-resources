@@ -6,7 +6,9 @@
 ## 文件归属
 
 每项资源包含 resource.json、README.md 和 media/ 下的 PNG/JPEG/WebP。
-历史版本可将说明放在 `versions/<version>/README.md`，并在版本记录中指定。
+可将每个版本的说明放在独立目录，例如 `versions/2-1-1/README.md`，并在版本记录中指定。
+为兼容 Studio，说明和封面的目录名只用 ASCII 字母、数字、连字符或下划线，不能写成 `versions/2.1.1/`。
+路径写法不改变资源记录中的版本号（仍为 `2.1.1`）。
 各版本 README 和所引用图片必须保留，不能用新版说明冒充旧版。
 说明可以引用相对图片路径；原始 HTML 不执行，远端图片和 SVG 不显示。
 
